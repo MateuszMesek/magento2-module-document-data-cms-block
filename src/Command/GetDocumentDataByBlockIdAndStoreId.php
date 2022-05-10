@@ -4,6 +4,7 @@ namespace MateuszMesek\DocumentDataCmsBlock\Command;
 
 use Magento\Cms\Model\BlockFactory;
 use Magento\Cms\Model\ResourceModel\Block as BlockResource;
+use MateuszMesek\DocumentDataApi\Data\DocumentDataInterface;
 
 class GetDocumentDataByBlockIdAndStoreId
 {
@@ -22,7 +23,7 @@ class GetDocumentDataByBlockIdAndStoreId
         $this->getDocumentData = $getDocumentData;
     }
 
-    public function execute(int $blockId, int $storeId): array
+    public function execute(int $blockId, int $storeId): ?DocumentDataInterface
     {
         $block = $this->blockFactory->create();
         $block->setStoreId($storeId);
