@@ -1,19 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace MateuszMesek\DocumentDataCmsBlock\Data;
+namespace MateuszMesek\DocumentDataCmsBlock\Model\Data;
 
 use Magento\Cms\Api\Data\BlockInterface;
-use MateuszMesek\DocumentDataApi\InputInterface;
+use MateuszMesek\DocumentDataApi\Model\InputInterface;
 
 class Input implements InputInterface
 {
-    private BlockInterface $block;
-
     public function __construct(
-        BlockInterface $block
+        private readonly BlockInterface $block
     )
     {
-        $this->block = $block;
     }
 
     /**

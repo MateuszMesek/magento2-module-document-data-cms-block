@@ -1,26 +1,20 @@
 <?php declare(strict_types=1);
 
-namespace MateuszMesek\DocumentDataCmsBlock\Command;
+namespace MateuszMesek\DocumentDataCmsBlock\Model\Command;
 
 use Magento\Cms\Model\BlockFactory;
 use Magento\Cms\Model\ResourceModel\Block as BlockResource;
-use MateuszMesek\DocumentDataApi\Data\DocumentDataInterface;
+use MateuszMesek\DocumentDataApi\Model\Data\DocumentDataInterface;
+use MateuszMesek\DocumentDataCmsBlock\Model\Command\GetDocumentData;
 
 class GetDocumentDataByBlockIdAndStoreId
 {
-    private BlockResource $blockResource;
-    private BlockFactory $blockFactory;
-    private GetDocumentData $getDocumentData;
-
     public function __construct(
-        BlockResource   $blockResource,
-        BlockFactory    $blockFactory,
-        GetDocumentData $getDocumentData
+        private readonly BlockResource   $blockResource,
+        private readonly BlockFactory    $blockFactory,
+        private readonly GetDocumentData $getDocumentData
     )
     {
-        $this->blockResource = $blockResource;
-        $this->blockFactory = $blockFactory;
-        $this->getDocumentData = $getDocumentData;
     }
 
     public function execute(int $blockId, int $storeId): ?DocumentDataInterface
